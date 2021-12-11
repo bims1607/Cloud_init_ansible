@@ -1,0 +1,13 @@
+#cloud-config
+runcmd:
+  - sudo apt-get update -y
+  - sudo apt-get upgrade -y
+  - sudo apt install python3-pip -y
+  - sudo pip3 install ansible boto3
+
+write_files:
+  - path: /home/ubuntu/Dockerfile
+    content: | 
+            FROM ubuntu:latest
+            RUN apt-get update -y && apt-get upgrade -y
+            CMD ["sleep", "infinity"]
